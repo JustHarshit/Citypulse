@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityPulse - Extracted Data Visualization</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        h1 { 
+            color: #667eea; 
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        #chart {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🚗 CityPulse - Extracted Traffic Data</h1>
+    <div id="chart" style="width:100%; height:500px;"></div>
+    
+    <script>
+        // Get data from URL parameters or use mock data
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataParam = urlParams.get('data');
+        
+        let chartData, layout;
+        
+        if (dataParam) {
+            try {
+                const data = JSON.parse(decodeURIComponent(dataParam));
+                chartData = data.chartData;
+                layout = data.layout;
+            } catch (e) {
+                console.error('Error parsing data:', e);
+            }
+        }
+        
+        // Use mock data if no data provided
+        if (!chartData) {
+            chartData = {
+                x: ['Location 1', 'Location 2', 'Location 3', 'Location 4', 'Location 5'],
+                y: [45, 32, 28, 55, 38],
+                type: 'bar',
+                marker: { color: ['green', 'orange', 'red', 'green', 'orange'] }
+            };
+            
+            layout = {
+                title: 'Extracted Traffic Speeds by Location',
+                xaxis: { title: 'Locations' },
+                yaxis: { title: 'Speed (km/h)' },
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+        }
+        
+        Plotly.newPlot('chart', [chartData], layout);
+    </script>
+</body>
+</html>

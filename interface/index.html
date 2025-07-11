@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityPulse - Smart Traffic Data Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚗 CityPulse</h1>
+            <p>Smart Traffic Data Upload & Analysis</p>
+        </header>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <h2>📤 Upload Traffic Images or Charts</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📊</div>
+                <div class="upload-text">Drag & Drop your traffic images here</div>
+                <div class="upload-hint">or click to browse files</div>
+                <div class="upload-hint">Supports: JPG, PNG, PDF, Screenshots from Maps apps</div>
+                <input type="file" id="fileInput" class="file-input" accept=".jpg,.jpeg,.png,.bmp,.tiff,.pdf" multiple>
+            </div>
+            <button class="btn" onclick="processFiles()">🔍 Analyze Images</button>
+            <button class="btn" onclick="clearFiles()">🗑️ Clear</button>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-title">Traffic Maps</div>
+                <div class="feature-description">
+                    Upload screenshots from Google Maps, Waze, or Apple Maps. 
+                    Automatically extract speed, location, and traffic condition data.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Charts & Graphs</div>
+                <div class="feature-description">
+                    Upload bar charts, line graphs, or pie charts from reports. 
+                    Extract numerical data and recreate interactive visualizations.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📷</div>
+                <div class="feature-title">Traffic Screenshots</div>
+                <div class="feature-description">
+                    Process traffic camera feeds or app screenshots. 
+                    Identify traffic conditions, speeds, and congestion levels.
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <div class="feature-title">Data Tables</div>
+                <div class="feature-description">
+                    Upload images of tables from reports or documents. 
+                    Convert to structured CSV data for analysis.
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Section -->
+        <div class="processing-section" id="processingSection">
+            <h3>🔄 Processing Your Images...</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="processingStatus">Initializing...</div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <h3>📊 Extraction Results</h3>
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
