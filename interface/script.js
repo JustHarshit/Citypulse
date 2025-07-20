@@ -207,6 +207,14 @@ function clearFiles() {
     showStatusMessage('Files cleared successfully', 'info');
 }
 
+function showLoadingSpinner() {
+    document.getElementById('loadingSpinner').style.display = '';
+}
+function hideLoadingSpinner() {
+    document.getElementById('loadingSpinner').style.display = 'none';
+}
+
+
 function processFiles() {
     if (selectedFiles.length === 0) {
         alert('Please select files to process first!');
@@ -269,6 +277,7 @@ async function uploadFilesToServer() {
             statusDiv.textContent = 'Falling back to demo mode...';
             setTimeout(() => {
                 hideSection('processingSection');
+                hideLoadingSpinner();
                 simulateProcessing();
             }, 1000);
         }, 2000);
